@@ -1,16 +1,23 @@
 public class Order {
 
-    MenuItem[] menus = new MenuItem[5];
-    int menusCount = 0;
+    OrderItem[] orderItems = new OrderItem[5];
+    int itemsCount = 0;
 
-    public void addMenu(MenuItem menuItem) {
-        menus[menusCount] = menuItem;
-        menusCount++;
+    public void addOrderItem(OrderItem orderItem) {
+
+
+        if (itemsCount < 5) {
+            orderItems[itemsCount] = orderItem;
+            itemsCount++;
+        } else {
+            System.out.println("Not added, order is full.");
+        }
     }
 
 
     private int orderId;
     private Customer customer;
+
 
     public Order(int orderId, Customer customer) {
         this.orderId = orderId;
@@ -27,7 +34,22 @@ public class Order {
 
 
     public void displayInfo() {
-        System.out.println("Order ID: " + orderId);
-        customer.displayInfo();
+
+        for (int i = 0; i < itemsCount; i++) {
+            System.out.println("\nMENU: " + (1 + i));
+            orderItems[i].displayInfo();
+        }
+    }
+
+    public double calculateTotal() {
+
+        double total = 0;
+
+            for (int i = 0; i < itemsCount; i++) {
+                double priceFound = orderItems[i].getMenuItem().getPrice();
+                int quantity = orderItems[i].getQuantity();
+                total += priceFound * quantity;
+            }
+        return total;
     }
 }

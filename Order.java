@@ -5,16 +5,15 @@ public class Order {
 
     public void addOrderItem(OrderItem orderItem) {
 
-
-        if (itemsCount < 5) {
+        if (itemsCount >= 5) {
+            System.out.println("Not added, order is full.");
+        } else if (orderItem.getQuantity() <= 0) {
+            System.out.println("Not added, quantity should be greater than 0.");
+        } else {
             orderItems[itemsCount] = orderItem;
             itemsCount++;
-        } else {
-            System.out.println("Not added, order is full.");
         }
     }
-
-
     private int orderId;
     private Customer customer;
 
@@ -35,10 +34,13 @@ public class Order {
 
     public void displayInfo() {
 
+        System.out.println("ORDER ID: " + getOrderId());
+        System.out.println("CUSTOMER: " + getCustomer().getName());
         for (int i = 0; i < itemsCount; i++) {
             System.out.println("\nMENU: " + (1 + i));
             orderItems[i].displayInfo();
         }
+        System.out.println("TOTAL: " + calculateTotal());
     }
 
     public double calculateTotal() {

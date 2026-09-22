@@ -5,7 +5,12 @@ public class OrderItem {
 
     public OrderItem(MenuItem menuItem, int quantity) {
         this.menuItem = menuItem;
-        this.quantity = quantity;
+
+        if (quantity > 0) {
+            this.quantity = quantity;
+        } else {
+            System.out.println("Quantity should be greater than 0.");
+        }
     }
 
     public int getQuantity() {

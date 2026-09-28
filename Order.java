@@ -9,6 +9,8 @@ public class Order {
             System.out.println("Not added, order is full.");
         } else if (orderItem.getQuantity() <= 0) {
             System.out.println("Not added, quantity should be greater than 0.");
+        } else if (!orderItem.getMenuItem().isAvailable()) {
+            System.out.println("Item currently unavailable, cannot order.");
         } else {
             orderItems[itemsCount] = orderItem;
             itemsCount++;

@@ -12,13 +12,18 @@ public class Main {
         OrderItem orderitem = new OrderItem(pizza, 2);
         OrderItem orderitem2 = new OrderItem(chicken, 1);
         OrderItem orderitem3 = new OrderItem(cheesecake, 3);
+        OrderItem orderitem4 = new OrderItem(cheesecake, 3);
+        OrderItem orderitem5 = new OrderItem(cheesecake, 3);
+        OrderItem orderitem6 = new OrderItem(cheesecake, 3);
 
         order.addOrderItem(orderitem);
         order.addOrderItem(orderitem2);
         order.addOrderItem(orderitem3);
+        order.addOrderItem(orderitem4);
+        order.addOrderItem(orderitem5);
+        order.addOrderItem(orderitem6);
 
         order.displayInfo();
 
-        System.out.println(order.calculateTotal());
     }
 }

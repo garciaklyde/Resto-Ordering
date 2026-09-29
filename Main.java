@@ -4,10 +4,12 @@ public class Main {
 
         Customer klyde = new Customer(100, "Klyde Garcia");
         Order order = new Order(100, klyde);
+        OrderManager manager = new OrderManager();
 
         MenuItem pizza = new MenuItem(100, "Pizza", 89);
         MenuItem chicken = new MenuItem(101, "Chicken", 150);
         MenuItem cheesecake = new MenuItem(102, "Cheesecake", 59);
+
 
         OrderItem orderitem = new OrderItem(pizza, 2);
         OrderItem orderitem2 = new OrderItem(chicken, 1);
@@ -23,7 +25,23 @@ public class Main {
         order.addOrderItem(orderitem5);
         order.addOrderItem(orderitem6);
 
-        order.displayInfo();
+        manager.addOrder(order);
+
+        manager.displayOrders();
+
+        Order foundOrder = manager.findOrder(100);
+        Order foundOrder1 = manager.findOrder(101);
+
+
+        System.out.println("======== FOUND ORDER ========");
+        foundOrder.displayInfo();
+        System.out.println("======== FOUND ORDER ========");
+
+        if (foundOrder1 == null) {
+            System.out.println("Order not found.");
+        } else {
+            foundOrder1.displayInfo();
+        }
 
     }
 }

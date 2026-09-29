@@ -40,5 +40,7 @@ public class MenuItem {
         }
     }
 
-
+    public void setToUnavailable() {
+        available = false;
+    }
 }

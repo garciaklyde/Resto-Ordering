@@ -4,7 +4,8 @@ public class Main {
 
         Customer klyde = new Customer(100, "Klyde Garcia");
         Order order = new Order(100, klyde);
-        OrderManager manager = new OrderManager();
+        OrderManager orderManager = new OrderManager();
+        MenuManager menuManager = new MenuManager();
 
         MenuItem pizza = new MenuItem(100, "Pizza", 89);
         MenuItem chicken = new MenuItem(101, "Chicken", 150);
@@ -25,23 +26,35 @@ public class Main {
         order.addOrderItem(orderitem5);
         order.addOrderItem(orderitem6);
 
-        manager.addOrder(order);
+        orderManager.addOrder(order);
 
-        manager.displayOrders();
+        menuManager.addMenuItem(pizza);
+        menuManager.addMenuItem(chicken);
+        menuManager.addMenuItem(cheesecake);
+        menuManager.addMenuItem(pizza);
+        menuManager.addMenuItem(pizza);
+        menuManager.addMenuItem(pizza);
 
-        Order foundOrder = manager.findOrder(100);
-        Order foundOrder1 = manager.findOrder(101);
+        System.out.println("\n======== ALL MENUS ========");
+        menuManager.displayMenuItems();
 
+        System.out.println("\n======== Menu Item: 100 ========");
+        MenuItem test = menuManager.findMenuItem(100);
 
-        System.out.println("======== FOUND ORDER ========");
-        foundOrder.displayInfo();
-        System.out.println("======== FOUND ORDER ========");
+        test.displayInfo();
 
-        if (foundOrder1 == null) {
-            System.out.println("Order not found.");
+        System.out.println("\n======== Menu Item: 200 ========");
+        MenuItem tryFind = menuManager.findMenuItem(200);
+
+        if (tryFind == null) {
+            System.out.println("Item not found.");
         } else {
-            foundOrder1.displayInfo();
+            tryFind.displayInfo();
         }
+
+
+
+
 
     }
 }
